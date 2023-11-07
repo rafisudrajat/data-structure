@@ -7,12 +7,12 @@ class ArraySequence
 {
 private:
     ElementType* elements;
-    int size;
+    int length;
 
 public:
     ArraySequence(){
-        size=0;
-        elements=new ElementType[size];
+        length=0;
+        elements=new ElementType[length];
     }
     
     ~ArraySequence(){
@@ -20,11 +20,11 @@ public:
     }
     
     int getLength(){
-        return size;
+        return length;
     }
 
     void printElements(){
-        for(int index=0;index<size;index++){
+        for(int index=0;index<length;index++){
             std::cout<<elements[index]<<" ";
         }
         std::cout<<"\n";
@@ -33,44 +33,47 @@ public:
     void build(ElementType* iterableData, int iterableDataSize){
         delete[] elements;
         elements = new ElementType[iterableDataSize];
-        size=iterableDataSize;
+        length=iterableDataSize;
         for(int index=0;index<iterableDataSize;index++){
             elements[index]=iterableData[index];
         }
     }
 
-    ElementType getAt(int index){
-        if(index>=size){
+    ElementType getAtIndex(int index){
+        if(index>=length){
             throw "Index must be less than the number of elements";
         }
         return elements[index];
     }
 
-    void setAt(int index, ElementType value){
-        if(index>=size){
+    void setAtIndex(int index, ElementType value){
+        if(index>=length){
             throw "Index must be less than the number of elements";
         }
         elements[index]=value;   
     }
     
     void insertAtIndex(int index, ElementType value){
-        if(index>=size+1){
+        if(index>=length+1){
             throw "Index must be less than the number of elements + 1";
         }
-        ElementType* newElements= new ElementType[size+1];
+        ElementType* newElements= new ElementType[length+1];
         copyElementsToNewElementsPartially(newElements,0,index-1);
         newElements[index]=value;
-        copyElementsToNewElementsPartially(newElements,index,size-1,index+1);
-        size++;
+        copyElementsToNewElementsPartially(newElements,index,length-1,1);
+        length++;
         delete[] elements;
         elements=newElements;
     }
 
     void deleteAtIndex(int index){
-        ElementType* newElements= new ElementType[size-1];
+        if(index>=length){
+            throw "Index must be less than the number of elements";
+        }
+        ElementType* newElements= new ElementType[length-1];
         copyElementsToNewElementsPartially(newElements,0,index-1);
-        copyElementsToNewElementsPartially(newElements,index+1,size-1,index);
-        size--;
+        copyElementsToNewElementsPartially(newElements,index+1,length-1,index);
+        length--;
         delete[] elements;
         elements=newElements;
     }
@@ -79,22 +82,22 @@ public:
         insertAtIndex(0,value);
     }
 
-    void insertLast(ElementType value){
-        insertAtIndex(size,value);
-    }
-
     void deleteFirst(){
         deleteAtIndex(0);
     }
 
+    void insertLast(ElementType value){
+        insertAtIndex(length,value);
+    }
+
     void deleteLast(){
-        deleteAtIndex(size);
+        deleteAtIndex(length-1);
     }
 
 private:
-    void copyElementsToNewElementsPartially(ElementType* newElements, int startIndex, int lastIndex, int newElementsStartIndex=0){
+    void copyElementsToNewElementsPartially(ElementType* newElements, int startIndex, int lastIndex, int startIndexOffset=0){
         for(int i=startIndex;i<=lastIndex;i++){
-            newElements[newElementsStartIndex+i]=elements[i];
+            newElements[i+startIndexOffset]=elements[i];
         }
     }
 

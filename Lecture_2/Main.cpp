@@ -2,6 +2,7 @@
 #include "ArraySequence.h"
 #include "StaticArray.h"
 #include "LinkedListSequence.h"
+#include "AmmortizedDynamicArray.h"
 using namespace AlgorithmPractice;
 
 void ArraySequenceTest(){
@@ -46,8 +47,27 @@ void LinkedListSequenceTest(){
 
 }
 
+void DynamicArrayTest(){
+    const int arrayLength=5;
+    int arrayTest[arrayLength];
+    for(int i=0;i<arrayLength;i++){
+        arrayTest[i]=i+2;
+    }
+    AmmortizedDynamicArray<int> dynamicArray(2);
+    dynamicArray.build(arrayTest,arrayLength);
+    dynamicArray.printElements();
+    dynamicArray.insertFirst(30);
+    dynamicArray.insertLast(90);
+    dynamicArray.insertAtIndex(2,69);
+    dynamicArray.printElements();
+    dynamicArray.deleteLast();
+    dynamicArray.printElements();
+}
+
 int main(){
     ArraySequenceTest();
     std::cout<<"\n";
     LinkedListSequenceTest();
+    std::cout<<"\n";
+    DynamicArrayTest();
 }

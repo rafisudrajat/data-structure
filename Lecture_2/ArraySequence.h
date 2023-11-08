@@ -58,9 +58,9 @@ public:
             throw "Index must be less than the number of elements + 1";
         }
         ElementType* newElements= new ElementType[length+1];
-        copyElementsToNewElementsPartially(newElements,0,index-1);
+        copyElementsToNewElements(newElements,0,index-1);
         newElements[index]=value;
-        copyElementsToNewElementsPartially(newElements,index,length-1,1);
+        copyElementsToNewElements(newElements,index,length-1,1);
         length++;
         delete[] elements;
         elements=newElements;
@@ -71,8 +71,8 @@ public:
             throw "Index must be less than the number of elements";
         }
         ElementType* newElements= new ElementType[length-1];
-        copyElementsToNewElementsPartially(newElements,0,index-1);
-        copyElementsToNewElementsPartially(newElements,index+1,length-1,index);
+        copyElementsToNewElements(newElements,0,index-1);
+        copyElementsToNewElements(newElements,index+1,length-1,index);
         length--;
         delete[] elements;
         elements=newElements;
@@ -95,7 +95,7 @@ public:
     }
 
 private:
-    void copyElementsToNewElementsPartially(ElementType* newElements, int startIndex, int lastIndex, int startIndexOffset=0){
+    void copyElementsToNewElements(ElementType* newElements, int startIndex, int lastIndex, int startIndexOffset=0){
         for(int i=startIndex;i<=lastIndex;i++){
             newElements[i+startIndexOffset]=elements[i];
         }

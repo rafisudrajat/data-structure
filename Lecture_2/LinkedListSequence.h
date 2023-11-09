@@ -1,6 +1,6 @@
 #include "LinkedListNode.h"
 #include <iostream>
-
+#pragma once
 namespace AlgorithmPractice{
 template<typename NodeValueType>
 class LinkedListSequence
@@ -15,6 +15,10 @@ public:
     }
     ~LinkedListSequence(){
 
+    }
+
+    LinkedListNode<NodeValueType>* getHead(){
+        return head;
     }
     
     void build(NodeValueType* iterableData, int iterableDataSize){

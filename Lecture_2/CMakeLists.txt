@@ -17,6 +17,8 @@ target_include_directories(Exercise1 PUBLIC ${CMAKE_SOURCE_DIR})
 add_library(SequenceLibrary STATIC
     ${CMAKE_SOURCE_DIR}/../Lecture_1/StaticArray.cpp
     ${CMAKE_SOURCE_DIR}/LinkedListSequence.h
+    ${CMAKE_SOURCE_DIR}/AmmortizedDynamicArray.h
+
 )
 
 target_link_libraries(Main PRIVATE SequenceLibrary)

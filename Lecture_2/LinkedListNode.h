@@ -11,8 +11,15 @@ public:
         this->value=value;
         this->nextNode=nextNode;
     }
+    
     ~LinkedListNode(){
         delete nextNode;
+    }
+
+    void breakCircularLinkedList(){
+        LinkedListNode<ValueType>* nextPtr=nextNode;
+        this->nextNode=nullptr;
+
     }
 };
 }

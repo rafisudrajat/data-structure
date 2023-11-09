@@ -24,7 +24,7 @@ LinkedListNode<int>* builtCircularLinkedList(int* array, int length){
 }
 
 int getNumberOfNodesInCircularLinkedList(LinkedListNode<int>* circularLinkedList){
-    LinkedListNode<int> *fastPointer, *slowPointer =circularLinkedList;
+    LinkedListNode<int> *fastPointer= circularLinkedList, *slowPointer =circularLinkedList;
     fastPointer=fastPointer->nextNode->nextNode;
     slowPointer=slowPointer->nextNode;
     int counter=1;
@@ -41,6 +41,7 @@ int getNumberOfNodesInCircularLinkedList(LinkedListNode<int>* circularLinkedList
 int main(){
     int arrayTest[5]={1,2,4,6,7};
     LinkedListNode<int>* circularLinkedList = builtCircularLinkedList(arrayTest,5);
-    std::cout<<getNumberOfNodesInCircularLinkedList(circularLinkedList);
+    std::cout<<getNumberOfNodesInCircularLinkedList(circularLinkedList)<<" ";
+    circularLinkedList->breakCircularLinkedList();
     delete circularLinkedList;
 }

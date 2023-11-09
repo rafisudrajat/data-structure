@@ -40,8 +40,13 @@ int getNumberOfNodesInCircularLinkedList(LinkedListNode<int>* circularLinkedList
 
 int main(){
     int arrayTest[5]={1,2,4,6,7};
+    int arrayTest2[6]={1,2,4,6,7,9};
     LinkedListNode<int>* circularLinkedList = builtCircularLinkedList(arrayTest,5);
+    LinkedListNode<int>* circularLinkedList2 = builtCircularLinkedList(arrayTest2,6);
     std::cout<<getNumberOfNodesInCircularLinkedList(circularLinkedList)<<" ";
+    std::cout<<getNumberOfNodesInCircularLinkedList(circularLinkedList2)<<" ";
     circularLinkedList->breakCircularLinkedList();
+    circularLinkedList2->breakCircularLinkedList();
     delete circularLinkedList;
+    delete circularLinkedList2;
 }

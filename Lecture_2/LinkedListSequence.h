@@ -96,10 +96,8 @@ public:
         LinkedListNode<NodeValueType>* nodePointerNext=nodePointer->nextNode;
         if(length!=1){
             nodePointer->nextNode=nodePointerNext->nextNode;
-            delete nodePointerNext;
-        }else{
-            delete nodePointer;
         }
+        delete nodePointerNext;
         length--;
     }
 

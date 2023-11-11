@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 
 namespace AlgorithmPractice{
@@ -38,7 +39,18 @@ namespace AlgorithmPractice{
             }
             std::cout<<"\n";
         }
-
+        ElementType getAtIndex(int index){
+            if(index>=length){
+                throw "Index must be less than the number of elements";
+            }
+            return arrayContainer[index];
+        }
+        void setAtIndex(int index, ElementType value){
+            if(index>=length){
+                throw "Index must be less than the number of elements";
+            }
+            arrayContainer[index]=value;   
+        }
         void insertAtIndex(int index, ElementType value){
             resize(length+1);
             copyArrayContainerToNewArrayContainerBackward(arrayContainer,index,length-1,1);

@@ -13,4 +13,11 @@ int main(){
     }
     SetFromSequence<int,int> setDataStructure= SetFromSequence<int,int>(pairArray,5);
     setDataStructure.printSetElements();
+    Pair<int,int> maxPair= setDataStructure.findMax();
+    std::cout<<maxPair.key<<", "<<maxPair.value<<"\n";
+    setDataStructure.deleteElement(0);
+    setDataStructure.deleteElement(1);
+    setDataStructure.insertElement({5,12});
+    setDataStructure.printSetElements();
+
 }

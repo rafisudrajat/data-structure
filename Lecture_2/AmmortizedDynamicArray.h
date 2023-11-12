@@ -59,7 +59,7 @@ namespace AlgorithmPractice{
         }
 
         void deleteAtIndex(int index){
-            copyArrayContainerToNewArrayContainer(arrayContainer,index,length-1,-1);
+            copyArrayContainerToNewArrayContainer(arrayContainer,index+1,length-1,-1);
             deleteLast();
         }
         

@@ -5,7 +5,7 @@ namespace AlgorithmPractice{
     template<typename ElementType>
     class AmmortizedDynamicArray
     {
-    private:
+    protected:
         int length;
         int capacity;
         ElementType* arrayContainer;
@@ -82,7 +82,11 @@ namespace AlgorithmPractice{
             resize(length);
         }
 
-    private:
+        int getLength(){
+            return length;
+        }
+
+    protected:
         void calculateBound(){
             upperBound=capacity;
             lowerBound=capacity/(sizingRatio*sizingRatio);

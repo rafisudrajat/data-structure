@@ -9,6 +9,7 @@ cmake_policy(SET CMP0135 NEW)
 
 add_subdirectory(Lecture_1)
 add_subdirectory(Lecture_2)
+add_subdirectory(Lecture_3)
 
 include(FetchContent)
 FetchContent_Declare(

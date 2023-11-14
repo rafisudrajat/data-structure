@@ -19,5 +19,6 @@ int main(){
     setDataStructure.deleteElement(1);
     setDataStructure.insertElement({5,12});
     setDataStructure.printSetElements();
+    std::cout<<setDataStructure.findElement(99)<<"\n";
 
 }

@@ -7,3 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # add the executable
 add_executable(PermutationSort PermutationSort.cpp)
 add_executable(SelectionSort SelectionSort.cpp)
+add_executable(InsertionSort InsertionSort.cpp)

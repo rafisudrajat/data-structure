@@ -26,27 +26,33 @@ void swapArrayElement(int* array,int leftIndex, int rightIndex){
     }
 }
 
-void permutationSort(int* array, int leftIndex, int rightIndex, bool keepRecursive=true){
-    if(!keepRecursive){
-        return;
-    }
+bool permutationSort(int* array, int leftIndex, int rightIndex){
     if(leftIndex==rightIndex){
         if(checkIfArrayIsSortedAscending(array,rightIndex+1)){
             printArray(array,rightIndex+1);
-            keepRecursive=false;
+            return false;
         }
-        return;
+        return true;
     }
+    bool keepRecursive= true;
     for(int i=leftIndex;i<=rightIndex;i++){
         swapArrayElement(array,leftIndex,i);
-        permutationSort(array,leftIndex+1,rightIndex,keepRecursive);
+        keepRecursive = permutationSort(array,leftIndex+1,rightIndex);
+        if (!keepRecursive) {
+            break;  // Stop further recursion
+        }
         swapArrayElement(array,leftIndex,i);
     }
+    return keepRecursive;
 }
 
 int main(){
-    int arr[3]={1,2,3};
+    int arr[3]={3,1,2};
+    int secondArr[5]={9,10,6,4,2};
     permutationSort(arr,0,2);
+    permutationSort(secondArr,0,4);
     printArray(arr,3);
+    printArray(secondArr,5);
+
   
 }

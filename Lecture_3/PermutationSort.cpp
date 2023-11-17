@@ -1,13 +1,8 @@
 // A dumb algorithm that try to check if there is a sorted array in every permutation of an array
 // it is dumb, but let's just make it anyway to give an example
 #include<iostream>
-
-void printArray(int* array,int size){
-    for(int i=0;i<size;i++){
-        std::cout<<array[i]<<" ";
-    }
-    std::cout<<"\n";
-}
+#include "Utils.h"
+using namespace AlgorithmPractice;
 
 bool checkIfArrayIsSortedAscending(int* array,int size){
     for(int i=1;i<size;i++){
@@ -29,7 +24,6 @@ void swapArrayElement(int* array,int leftIndex, int rightIndex){
 bool permutationSort(int* array, int leftIndex, int rightIndex){
     if(leftIndex==rightIndex){
         if(checkIfArrayIsSortedAscending(array,rightIndex+1)){
-            printArray(array,rightIndex+1);
             return false;
         }
         return true;

@@ -1,4 +1,8 @@
 #include <iostream>
+#include "Utils.h"
+using namespace AlgorithmPractice;
+
+
 int findMaxElementIndexBetweenLeftIndexAndRightIndex(int* array,int leftIndex, int rightIndex){
     int maxElement=array[leftIndex];
     int maxElementIndex=leftIndex;
@@ -33,12 +37,6 @@ void selectionSortRecursive(int* array, int lastIndex){
     selectionSortIterative(array,lastIndex-1);
 }
 
-void printArray(int* array,int size){
-    for(int i=0;i<size;i++){
-        std::cout<<array[i]<<" ";
-    }
-    std::cout<<"\n";
-}
 
 int main(){
     int arrayTest[4]={0,4,2,1};

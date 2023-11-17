@@ -1,4 +1,6 @@
 #include<iostream>
+#include "Utils.h"
+using namespace AlgorithmPractice;
 
 void swapArrayElement(int* array,int leftIndex, int rightIndex){
     if(leftIndex!=rightIndex){
@@ -21,13 +23,6 @@ void insertionSort(int* array,int arraySize){
     for(int i=0;i<arraySize;i++){
         sortSubArray(array,i);
     }
-}
-
-void printArray(int* array,int size){
-    for(int i=0;i<size;i++){
-        std::cout<<array[i]<<" ";
-    }
-    std::cout<<"\n";
 }
 
 int main(){

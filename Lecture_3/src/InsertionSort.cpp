@@ -1,6 +1,6 @@
 #include<iostream>
-#include "Utils.h"
-using namespace AlgorithmPractice;
+#include "InsertionSort.h"
+namespace AlgorithmPractice{
 
 void swapArrayElement(int* array,int leftIndex, int rightIndex){
     if(leftIndex!=rightIndex){
@@ -25,11 +25,4 @@ void insertionSort(int* array,int arraySize){
     }
 }
 
-int main(){
-    int arrayTest[4]={0,4,2,1};
-    int secondArrayTest[5]={0,9,7,8,2};
-    insertionSort(arrayTest,4);
-    insertionSort(secondArrayTest,5);
-    printArray(arrayTest,4);
-    printArray(secondArrayTest,5);
 }

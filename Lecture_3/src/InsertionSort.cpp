@@ -1,14 +1,7 @@
 #include<iostream>
 #include "InsertionSort.h"
+#include "Utils.h"
 namespace AlgorithmPractice{
-
-void swapArrayElement(int* array,int leftIndex, int rightIndex){
-    if(leftIndex!=rightIndex){
-        array[leftIndex] += array[rightIndex];
-        array[rightIndex] = array[leftIndex] - array[rightIndex];
-        array[leftIndex] -= array[rightIndex];
-    }
-}
 
 void sortSubArray(int *array, int currentIndex){
     int arrayElement=array[currentIndex];

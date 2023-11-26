@@ -4,13 +4,13 @@ using namespace AlgorithmPractice;
 
 // Test case to check if insertion sort works correctly
 TEST(InsertionSortTest, SortsArray) {
-    // Arrange
+    // Preparation
     int unsortedArray[] = {5, 3, 8, 1, 2};
 
-    // Act
+    // Call
     insertionSort(unsortedArray, 5);
 
-    // Assert
+    // Assertion
     // Verify that the array is sorted correctly
     for (size_t i = 1; i < 5; ++i) {
         EXPECT_LE(unsortedArray[i - 1], unsortedArray[i]);

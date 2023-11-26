@@ -28,7 +28,7 @@ void selectionSortRecursive(int* array, int lastIndex){
     }
     int maxIndex=findMaxElementIndexBetweenLeftIndexAndRightIndex(array,0,lastIndex);
     swapArrayElement(array,lastIndex,maxIndex);
-    selectionSortIterative(array,lastIndex-1);
+    selectionSortRecursive(array,lastIndex-1);
 }
 
 }

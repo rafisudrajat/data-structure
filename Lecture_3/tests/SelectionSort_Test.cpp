@@ -3,7 +3,7 @@
 using namespace AlgorithmPractice;
 
 // Test case to check if insertion sort works correctly
-TEST(SelectionSortTest, SortsArrayRecursive) {
+TEST(SelectionSortRecursive, ShouldSortArray) {
     // Preparation
     int unsortedArray[5] = {9,10,6,4,2};
 
@@ -18,7 +18,7 @@ TEST(SelectionSortTest, SortsArrayRecursive) {
 }
 
 // Test case to check if insertion sort works correctly
-TEST(SelectionSortTest, SortsArrayIterative) {
+TEST(SelectionSortIterative, ShouldSortArray) {
     // Preparation
     int unsortedArray[] = {5, 3, 8, 1, 2};
 

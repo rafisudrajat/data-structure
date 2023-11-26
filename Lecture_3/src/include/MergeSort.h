@@ -1,11 +1,12 @@
 #pragma once
+#include <vector>
 
 namespace AlgorithmPractice{
 
 template<typename ArrayType>
 void copySliceOfArray(ArrayType *originalArray, ArrayType *newArray, int oriFirstIndex, int oriLastIndex, int newArrayFirstIndex=0){
-    int newArraySize= oriLastIndex-oriFirstIndex+1;
-    for (int i = 0; i < newArraySize; i++)
+    int arraySize= oriLastIndex-oriFirstIndex+1;
+    for (int i = 0; i < arraySize; i++)
     {
         newArray[newArrayFirstIndex+i]=originalArray[oriFirstIndex+i];
     }
@@ -54,5 +55,60 @@ void numericalMergeSort(ArrayType *array, int leftIndex, int rightIndex) {
     numericalMergeSort(array, midIndex + 1, rightIndex);
     numericalMerge(array, leftIndex, midIndex, midIndex + 1, rightIndex);
 }
+
+template<typename VectorType>
+void copySliceOfVector(std::vector<VectorType>& originalVector, std::vector<VectorType>& newVector, int oriFirstIndex, int oriLastIndex, int newVectorFirstIndex=0){
+    int vectorSize= oriLastIndex-oriFirstIndex+1;
+    for (int i = 0; i < vectorSize; i++)
+    {
+        newVector[newVectorFirstIndex+i]=originalVector[oriFirstIndex+i];
+    }
+}
+
+template<typename VectorType>
+void numericalMergeSort(std::vector<VectorType> &vector, int leftIndex, int rightIndex){
+    if (leftIndex >= rightIndex) {
+        return;
+    }
+    int midIndex = (leftIndex + rightIndex) / 2;
+    numericalMergeSort(vector, leftIndex, midIndex);
+    numericalMergeSort(vector, midIndex + 1, rightIndex);
+    numericalMerge(vector, leftIndex, midIndex, midIndex + 1, rightIndex);
+}
+
+template<typename VectorType>
+void numericalMerge(std::vector<VectorType> &vector, int leftVectorFirstIndex, int leftVectorLastIndex, int rightVectorFirstIndex, int rightVectorLastIndex){
+    int indexIter=leftVectorFirstIndex;
+    int leftVectorIndexIter=0;
+    int rigthVectorIndexIter=0;
+
+    int leftVectorSize = leftVectorLastIndex-leftVectorFirstIndex+1;
+    int rightVectorSize = rightVectorLastIndex-rightVectorFirstIndex+1;
+
+    std::vector<VectorType> leftVector(leftVectorSize);
+    std::vector<VectorType> rightVector(rightVectorSize);
+
+    copySliceOfVector(vector,leftVector,leftVectorFirstIndex,leftVectorLastIndex);
+    copySliceOfArray(vector,rightVector,rightVectorFirstIndex,rightVectorLastIndex);
+
+    while (leftVectorIndexIter < leftVectorSize && rigthVectorIndexIter < rightVectorSize)
+    {
+        if(leftVector[leftVectorIndexIter] < rightVector[rigthVectorIndexIter]){
+            vector[indexIter]=leftVector[leftVectorIndexIter];
+            leftVectorIndexIter++;
+        }else{
+            vector[indexIter]=rightVector[rigthVectorIndexIter];
+            rigthVectorIndexIter++;
+        }
+        indexIter++;
+    }
+
+
+    copySliceOfVector(leftVector,vector,leftVectorIndexIter,leftVectorSize-1,indexIter);
+    copySliceOfArray(rightVector,vector,rigthVectorIndexIter,rightVectorSize-1,indexIter);
+   
+}
+
+
 
 }

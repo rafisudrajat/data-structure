@@ -27,3 +27,28 @@ target_link_libraries(
 )
 
 gtest_discover_tests(SelectionSort_Test)
+        
+add_executable(
+    PermutationSort_Test
+    PermutationSort_Test.cpp
+)
+
+target_link_libraries(
+    PermutationSort_Test
+    GTest::gtest_main
+    PermutationSort
+)
+
+gtest_discover_tests(PermutationSort_Test)
+
+add_executable(
+    MergeSort_Test
+    MergeSort_Test.cpp
+)
+
+target_link_libraries(
+    MergeSort_Test
+    GTest::gtest_main
+)
+
+gtest_discover_tests(MergeSort_Test)

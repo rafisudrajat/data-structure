@@ -66,17 +66,6 @@ void copySliceOfVector(std::vector<VectorType>& originalVector, std::vector<Vect
 }
 
 template<typename VectorType>
-void numericalMergeSort(std::vector<VectorType> &vector, int leftIndex, int rightIndex){
-    if (leftIndex >= rightIndex) {
-        return;
-    }
-    int midIndex = (leftIndex + rightIndex) / 2;
-    numericalMergeSort(vector, leftIndex, midIndex);
-    numericalMergeSort(vector, midIndex + 1, rightIndex);
-    numericalMerge(vector, leftIndex, midIndex, midIndex + 1, rightIndex);
-}
-
-template<typename VectorType>
 void numericalMerge(std::vector<VectorType> &vector, int leftVectorFirstIndex, int leftVectorLastIndex, int rightVectorFirstIndex, int rightVectorLastIndex){
     int indexIter=leftVectorFirstIndex;
     int leftVectorIndexIter=0;
@@ -89,7 +78,7 @@ void numericalMerge(std::vector<VectorType> &vector, int leftVectorFirstIndex, i
     std::vector<VectorType> rightVector(rightVectorSize);
 
     copySliceOfVector(vector,leftVector,leftVectorFirstIndex,leftVectorLastIndex);
-    copySliceOfArray(vector,rightVector,rightVectorFirstIndex,rightVectorLastIndex);
+    copySliceOfVector(vector,rightVector,rightVectorFirstIndex,rightVectorLastIndex);
 
     while (leftVectorIndexIter < leftVectorSize && rigthVectorIndexIter < rightVectorSize)
     {
@@ -105,8 +94,19 @@ void numericalMerge(std::vector<VectorType> &vector, int leftVectorFirstIndex, i
 
 
     copySliceOfVector(leftVector,vector,leftVectorIndexIter,leftVectorSize-1,indexIter);
-    copySliceOfArray(rightVector,vector,rigthVectorIndexIter,rightVectorSize-1,indexIter);
+    copySliceOfVector(rightVector,vector,rigthVectorIndexIter,rightVectorSize-1,indexIter);
    
+}
+
+template<typename VectorType>
+void numericalMergeSort(std::vector<VectorType> &vector, int leftIndex, int rightIndex){
+    if (leftIndex >= rightIndex) {
+        return;
+    }
+    int midIndex = (leftIndex + rightIndex) / 2;
+    numericalMergeSort(vector, leftIndex, midIndex);
+    numericalMergeSort(vector, midIndex + 1, rightIndex);
+    numericalMerge(vector, leftIndex, midIndex, midIndex + 1, rightIndex);
 }
 
 

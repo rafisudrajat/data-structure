@@ -52,3 +52,16 @@ target_link_libraries(
 )
 
 gtest_discover_tests(MergeSort_Test)
+
+add_executable(
+    Utils_Test
+    Utils_Test.cpp
+)
+
+target_link_libraries(
+    Utils_Test
+    GTest::gtest_main
+    Utils
+)
+
+gtest_discover_tests(Utils_Test)

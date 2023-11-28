@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MergeSort.h"
 #include "Utils.h"
+#include <vector>
 using namespace AlgorithmPractice;
 
 int main(){
@@ -12,5 +13,8 @@ int main(){
     int arrayTest2[9]={1,5,2,4,7,1,2,9,10};
     numericalMergeSort(arrayTest2,0,8);
     printArray(arrayTest2,9);
+
+    std::vector<int> testBin={1,5,2,6,7,3};
+    binarySearch<int>(testBin,3);
 
 }

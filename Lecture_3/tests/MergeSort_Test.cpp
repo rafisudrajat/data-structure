@@ -31,3 +31,33 @@ TEST(MergeSort, ShouldSortVector){
         EXPECT_LE(unsortedVector[i - 1], unsortedVector[i]);
     }
 }
+
+TEST(CopySliceOfArray, ShouldCopySliceOfArrayInplace){
+    //Prep
+    int originalArray[]={1,2,3,4,5};
+    int newArray[]={9,8,7,6,10};
+
+    //Call
+    copySliceOfArray(originalArray,newArray,1,3,2);
+
+    //Assertion
+    int expectedNewArray[]={9,8,2,3,4};
+    for (size_t i = 1; i < 5; ++i) {
+        EXPECT_TRUE(newArray[i]==expectedNewArray[i]);
+    }
+}
+
+TEST(CopySliceOfVector, ShouldCopySliceOfVectorInplace){
+    //Prep
+    std::vector<int> originalVector={1,2,3,4,5};
+    std::vector<int> newVector={9,8,7,6,10};
+
+    //Call
+    copySliceOfVector<int>(originalVector,newVector,1,3,2);
+
+    //Assertion
+    std::vector<int> expectedNewVector={9,8,2,3,4};
+    for (size_t i = 1; i < 5; ++i) {
+        EXPECT_TRUE(newVector[i]==expectedNewVector[i]);
+    }
+}

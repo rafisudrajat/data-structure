@@ -35,13 +35,3 @@ bool permutationSort(int* array, int leftIndex, int rightIndex){
 
 }
 
-// using namespace AlgorithmPractice;
-// int main(){
-//     int arr[3]={3,1,2};
-//     int secondArr[5]={9,10,6,4,2};
-//     permutationSort(arr,0,2);
-//     permutationSort(secondArr,0,4);
-//     printArray(arr,3);
-//     printArray(secondArr,5);
-  
-// }

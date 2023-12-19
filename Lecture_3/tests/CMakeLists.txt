@@ -65,3 +65,16 @@ target_link_libraries(
 )
 
 gtest_discover_tests(Utils_Test)
+
+add_executable(
+    SortedArraySet_Test
+    SortedArraySet_Test.cpp
+)
+
+target_link_libraries(
+    SortedArraySet_Test
+    GTest::gtest_main
+    Utils
+)
+
+gtest_discover_tests(SortedArraySet_Test)

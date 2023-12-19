@@ -1,6 +1,7 @@
 #include "Utils.h"
 #include <gtest/gtest.h>
 #include <vector>
+#include <unordered_map>
 using namespace AlgorithmPractice;
 
 // Define a parameterized test fixture
@@ -26,9 +27,9 @@ TEST_P(BinarySearchTestFoundElement, ShouldReturnTruetIfElementExist) {
     int element=GetParam();
     std::vector<int> testVector={1,5,8,9,10,12};
 
-    bool searchResult= binarySearch(testVector,element);
+    BinarySearchReturnType<int> searchResult= binarySearch(testVector,element);
 
-    EXPECT_TRUE(searchResult);
+    EXPECT_TRUE(searchResult.ElementExist && searchResult.ElementValue==element);
     
 }
 
@@ -36,8 +37,34 @@ TEST_P(BinarySearchTestNotFoundElement, ShouldReturnFalseIfElementNotExist){
     int element=GetParam();
     std::vector<int> testVector={1,5,8,9,10,12};
 
-    bool searchResult= binarySearch(testVector,element);
+    BinarySearchReturnType<int> searchResult= binarySearch(testVector,element);
 
-    EXPECT_FALSE(searchResult);
+    EXPECT_FALSE(searchResult.ElementExist || searchResult.ElementValue==element);
   
+}
+
+void buildElementIndexPair(std::unordered_map<int,int>& hashMap, std::vector<int> vector){
+    for(int i=0;i<vector.size();i++){
+        hashMap.insert({vector[i],i});
+    }
+}
+
+TEST_P(BinarySearchTestFoundElement, ShouldReturnValidIndexIfElementExist){
+    int element=GetParam();
+    std::vector<int> testVector={1,5,8,9,10,12};
+    std::unordered_map<int,int> hashMap;
+    buildElementIndexPair(hashMap,testVector);
+
+    int indexSearchResult= binarySearchIndex(testVector,element);
+
+    EXPECT_TRUE(indexSearchResult==hashMap[element]);
+}
+
+TEST_P(BinarySearchTestNotFoundElement, ShouldReturnInvalidIndexIfElementExist){
+    int element=GetParam();
+    std::vector<int> testVector={1,5,8,9,10,12};
+
+    int indexSearchResult= binarySearchIndex(testVector,element);
+
+    EXPECT_TRUE(indexSearchResult==-1);
 }

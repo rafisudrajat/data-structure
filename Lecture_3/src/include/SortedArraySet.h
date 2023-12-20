@@ -18,23 +18,6 @@ class SortedArraySet
 //findprev -> O(log n)
 private:
     std::vector<ElementType> setContainer;
-
-    void printVector(){
-        for (auto elem: setContainer)
-        {
-            std::cout<<elem<<" ";
-        }
-        std::cout<<"\n";
-        
-    }
-
-    void printArray(ElementType* sequence, int sequenceSize){
-        for (size_t i = 0; i < sequenceSize; i++)
-        {
-            std::cout<<sequence[i]<<" ";
-        }
-        std::cout<<"\n";
-    }
 public:
     SortedArraySet(ElementType* sequence, int sequenceSize){
         if(sequenceSize==0){
@@ -95,12 +78,11 @@ public:
     }
 
     ElementType findMax(){
-        return *setContainer.end();
+        return *(setContainer.end()-1);
     }
 
     ElementType findNext(ElementType element){
         int index = binarySearchIndex(setContainer,element);
-        /// TO DO: Handle excepton because of index
         if(index<0){
             std::cout<< "Cannot find index"<<'\n';
             return ElementType();

@@ -12,10 +12,6 @@ void buildElementFrequencyPair(std::unordered_map<int,int>& hashMap, std::vector
     }
 }
 
-void buildElementIndexPair(std::unordered_map<int,int>& hashMap, std::vector<int> vector){
-
-}
-
 // Test case to check if insertion sort works correctly
 TEST(SortedArraySetTest, ShouldSortedArrayInConstructor) {
     // Preparation
@@ -149,7 +145,6 @@ TEST(SortedArraySet_DeleteElement, ShouldNotContainDeletedElement){
     int arrayElements[arraySize]={8,9,2,4,1,1,2};
     SortedArraySet<int> sortedArraySet(arrayElements,arraySize);
 
-
     // Call
     sortedArraySet.deleteElement(1);
 
@@ -170,6 +165,58 @@ TEST(SortedArraySet_DeleteElement, ShouldElementsNumberShouldReducedBy1){
     // Assertion
     int numberOfELementsAfterDeletion= sortedArraySet.returnAllElementAsVector().size();
     ASSERT_TRUE(numberOfELementsAfterDeletion == numberOfELementsBeforeDeletion-1);
+}
+
+TEST(SortedArraySet_FindMaxTest, ShouldReturnMaxElement){
+    // Prep
+    const int arraySize=7;
+    int arrayElements[arraySize]={8,9,2,4,1,1,2};
+    SortedArraySet<int> sortedArraySet(arrayElements,arraySize);
+
+    // Call
+    int maxElement=sortedArraySet.findMax();
+
+    // Assertion
+    ASSERT_EQ(maxElement,9);
+}
+
+TEST(SortedArraySet_FindMinTest, ShouldReturnMinElement){
+    // Prep
+    const int arraySize=7;
+    int arrayElements[arraySize]={8,9,2,4,1,1,2};
+    SortedArraySet<int> sortedArraySet(arrayElements,arraySize);
+
+    // Call
+    int minElement=sortedArraySet.findMin();
+
+    // Assertion
+    ASSERT_EQ(minElement,1);
+}
+
+TEST(SortedArraySet_FindNextTest, ShouldReturnNearestGreaterElement){
+    // Prep
+    const int arraySize=7;
+    int arrayElements[arraySize]={8,9,2,4,1,1,2};
+    SortedArraySet<int> sortedArraySet(arrayElements,arraySize);
+
+    // Call
+    int findNextResult = sortedArraySet.findNext(8);
+
+    // Assertion
+    ASSERT_EQ(findNextResult,9);
+}
+
+TEST(SortedArraySet_FindPrevTest, ShouldReturnNearestSmallerElement){
+    // Prep
+    const int arraySize=7;
+    int arrayElements[arraySize]={8,9,2,4,1,1,2};
+    SortedArraySet<int> sortedArraySet(arrayElements,arraySize);
+
+    // Call
+    int findPrevResult = sortedArraySet.findPrev(8);
+
+    // Assertion
+    ASSERT_EQ(findPrevResult,4);
 }
 
 

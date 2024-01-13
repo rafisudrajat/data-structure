@@ -1,6 +1,6 @@
 // The set must be dynamic
 #pragma once
-#include "../AmmortizedDynamicArray.h"
+#include "AmmortizedDynamicArray.h"
 #include "Pair.h"
 #include <iostream>
 namespace AlgorithmPractice{

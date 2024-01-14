@@ -7,7 +7,7 @@ class LinkedListNode
 public:
     ValueType value;
     LinkedListNode<ValueType>* nextNode;
-    LinkedListNode(ValueType value, LinkedListNode<ValueType>* nextNode){
+    LinkedListNode(ValueType value, LinkedListNode<ValueType>* nextNode=nullptr){
         this->value=value;
         this->nextNode=nextNode;
     }

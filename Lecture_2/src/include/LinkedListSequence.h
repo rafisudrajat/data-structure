@@ -68,6 +68,7 @@ public:
     void deleteFirst(){
         LinkedListNode<NodeValueType>* headPointer=head;
         head=head->nextNode;
+        headPointer->nextNode=nullptr;
         delete headPointer;
         length--;
     }
@@ -97,6 +98,7 @@ public:
         if(length!=1){
             nodePointer->nextNode=nodePointerNext->nextNode;
         }
+        nodePointerNext->nextNode=nullptr;
         delete nodePointerNext;
         length--;
     }
